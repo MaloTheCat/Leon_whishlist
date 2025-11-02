@@ -1,0 +1,2 @@
+# Leon_whishlist
+[VIBECODING TEST] A Christmas list to simplify who gave what. In your account, you can manage your list and edit the lists of other people in the same group. With a simple and quick view, you'll also have the option to import your lists from a file.
