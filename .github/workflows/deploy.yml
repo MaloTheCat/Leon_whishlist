@@ -1,10 +1,8 @@
-name: Deploy to Production
+name: Deploy Leon Whislist to home server
 
 on:
   push:
     branches: [ main ]
-    tags:
-      - 'v*'
 
   workflow_dispatch:  # Permet le déclenchement manuel
 
@@ -51,7 +49,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
-    name: Deploy to Server
+    name: Deploy to Server via SSH
     needs: build-and-push
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -60,13 +58,14 @@ jobs:
       - name: Deploy to production server
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /path/to/your/app
-            docker-compose pull
+            cd /home/deploy/leon-wishlist
+            docker-compose pull web
+            docker compose down
             docker-compose up -d
             docker-compose exec -T web rails db:migrate
             docker-compose restart web
@@ -81,12 +80,11 @@ jobs:
         if: failure()
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /path/to/your/app
-            # Rollback vers l'image précédente
+            cd /home/deploy/leon-wishlist
             docker-compose down
             docker-compose up -d

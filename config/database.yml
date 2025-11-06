@@ -1,17 +1,3 @@
-# PostgreSQL. Versions 9.3 and up are supported.
-#
-# Install the pg driver:
-#   gem install pg
-# On macOS with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-# On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
-#
-# Configure Using Gemfile
-# gem "pg"
-#
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -27,6 +13,8 @@ test:
 
 production:
   <<: *default
+  host: 192.168.1.128  # IP du container PostgreSQL
+  port: 5432
   database: leon_whishlist_production
-  username: leon_whishlist
+  username: <%= ENV["POSTGRES_USER"] %>
   password: <%= ENV["LEON_WHISHLIST_DATABASE_PASSWORD"] %>

@@ -154,25 +154,6 @@ Le projet est configuré avec GitHub Actions pour l'intégration et le déploiem
 ![Deploy](https://github.com/MaloTheCat/Leon_whishlist/workflows/Deploy%20to%20Production/badge.svg)
 ```
 
-## 📝 Routes principales
-
-```
-GET    /                         → wishlists#index (page d'accueil)
-GET    /login                    → sessions#new
-POST   /login                    → sessions#create
-DELETE /logout                   → sessions#destroy
-GET    /signup                   → registrations#new
-POST   /signup                   → registrations#create
-
-GET    /family                   → families#show
-GET    /wishlists                → wishlists#index
-GET    /wishlists/:id            → wishlists#show
-POST   /wishlists/:id/share      → wishlists#share
-
-POST   /wishlists/:wishlist_id/gifts/:id/reserve    → gifts#reserve
-DELETE /wishlists/:wishlist_id/gifts/:id/unreserve  → gifts#unreserve
-```
-
 ## 🤝 Contribution
 
 Ce projet est un MVP de vibecoding. N'hésitez pas à proposer des améliorations !
