@@ -56,7 +56,7 @@ Une application de gestion de listes de cadeaux familiales développée en Ruby 
 1. **Cloner le repository**
 ```bash
 git clone [URL_DU_REPO]
-cd leon_whishlist
+cd leon_wishlist
 ```
 
 2. **Installer les dépendances**
@@ -150,8 +150,8 @@ Le projet est configuré avec GitHub Actions pour l'intégration et le déploiem
 
 ### Badges de status :
 ```markdown
-![CI](https://github.com/MaloTheCat/Leon_whishlist/workflows/CI/badge.svg)
-![Deploy](https://github.com/MaloTheCat/Leon_whishlist/workflows/Deploy%20to%20Production/badge.svg)
+![CI](https://github.com/MaloTheCat/Leon_wishlist/workflows/CI/badge.svg)
+![Deploy](https://github.com/MaloTheCat/Leon_wishlist/workflows/Deploy%20to%20Production/badge.svg)
 ```
 
 ## 🤝 Contribution

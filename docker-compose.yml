@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   web:
-    image: ghcr.io/malthecat/leon_whishlist:latest
+    image: ghcr.io/malthecat/leon_wishlist:latest
     container_name: leon_wishlist_web
     restart: unless-stopped
     environment:
       - RAILS_ENV=production
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${LEON_WHISHLIST_DATABASE_PASSWORD}@192.168.1.128:5432/leon_wishlist_production
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${LEON_WISHLIST_DATABASE_PASSWORD}@192.168.1.128:5432/leon_wishlist_production
       - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
       - SECRET_KEY_BASE=${SECRET_KEY_BASE}
       - REDIS_URL=redis://redis:6379/0
@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${LEON_WHISHLIST_DATABASE_PASSWORD}
+      - POSTGRES_PASSWORD=${LEON_WISHLIST_DATABASE_PASSWORD}
       - POSTGRES_DB=leon_wishlist_production
     volumes:
       - postgres_data:/var/lib/postgresql/data
