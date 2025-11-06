@@ -8,8 +8,6 @@ permissions:
   contents: read
   packages: write
 
-  workflow_dispatch:  # Permet le déclenchement manuel
-
 jobs:
   build-and-push:
     name: Build & Push Docker Image
