@@ -38,7 +38,7 @@ Une application de gestion de listes de cadeaux familiales développée en Ruby 
 
 ## 🛠 Technologies
 
-- **Ruby**: 3.0.3
+- **Ruby**: 3.2.2
 - **Rails**: 7.1.6
 - **Base de données**: PostgreSQL
 - **Frontend**: Bootstrap 5.3 (via CDN)
@@ -47,7 +47,7 @@ Une application de gestion de listes de cadeaux familiales développée en Ruby 
 ## 📦 Installation
 
 ### Prérequis
-- Ruby 3.0.3
+- Ruby 3.2.2
 - PostgreSQL
 - Bundler
 
