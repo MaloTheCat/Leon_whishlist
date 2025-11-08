@@ -76,16 +76,27 @@ jobs:
 
             ls -la /home/deploy/leon-wishlist
 
-      - name: Copy docker-compose.yml to server
+      - name: Create .env file
+        run: |
+          cat > .env << EOF
+          POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+          LEON_WISHLIST_DATABASE_PASSWORD=${{ secrets.LEON_WISHLIST_DATABASE_PASSWORD }}
+          RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}
+          SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
+          EOF
+
+      - name: Copy all files to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "docker-compose.yml"
+          source: "."
           target: "/home/deploy/leon-wishlist/"
           overwrite: true
+          rm: true
+          exclude: ".git,.github,.gitignore,log/*,tmp/*,node_modules/*"
 
       - name: Deploy to production server
         uses: appleboy/ssh-action@v1.0.0

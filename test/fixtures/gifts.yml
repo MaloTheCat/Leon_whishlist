@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  price: 9.99
-  link: MyString
-  reserved_by_id: 1
+  name: Book - The Pragmatic Programmer
+  price: 29.99
+  link: https://example.com/book
+  reserved_by_id: 
   wishlist: one
 
 two:
-  name: MyString
-  price: 9.99
-  link: MyString
-  reserved_by_id: 1
+  name: Wireless Headphones
+  price: 89.99
+  link: https://example.com/headphones
+  reserved_by_id: 
   wishlist: two
