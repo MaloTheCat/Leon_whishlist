@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  invite_code: MyString
+  invite_code: INVITE001
 
 two:
   name: MyString
-  invite_code: MyString
+  invite_code: INVITE002
