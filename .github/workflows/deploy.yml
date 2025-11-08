@@ -80,17 +80,20 @@ jobs:
           script: |
             cd /home/deploy/leon-wishlist
 
-            echo "📦 Pull de la nouvelle image..."
+            echo "Give permissions to docker-compose.yml"
+            chmod +x ./docker-compose.yml
+
+            echo "📦 Pull de la nouvelle image"
             docker compose pull web
 
-            echo "🔄 Redémarrage de l'application..."
+            echo "🔄 Redémarrage de l'application"
             docker compose down
             docker compose up -d
 
-            echo "⏳ Attente du démarrage..."
+            echo "⏳ Attente du démarrage"
             sleep 15
 
-            echo "🗄️ Migration de la base de données..."
+            echo "🗄️ Migration de la base de données"
             docker compose exec -T web bundle exec rails db:migrate RAILS_ENV=production
 
             echo "✅ Déploiement terminé!"
