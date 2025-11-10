@@ -1,11 +1,8 @@
-version: '3.8'
-
 services:
   web:
     image: ghcr.io/malothecat/leon_wishlist:latest
     container_name: leon_wishlist_web
     restart: unless-stopped
-    user: "1000:1000"
     environment:
       - RAILS_ENV=production
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${LEON_WISHLIST_DATABASE_PASSWORD}@192.168.1.128:5432/leon_wishlist_production

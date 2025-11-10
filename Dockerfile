@@ -39,6 +39,8 @@ RUN groupadd -g 1000 rails && \
     useradd -u 1000 -g rails --create-home --shell /bin/bash rails && \
     chown -R rails:rails db log storage tmp
 
+USER rails
+
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 EXPOSE 3000
