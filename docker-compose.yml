@@ -3,6 +3,12 @@ services:
     image: ghcr.io/malothecat/leon_wishlist:latest
     container_name: leon_wishlist_web
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
     environment:
       - RAILS_ENV=production
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${LEON_WISHLIST_DATABASE_PASSWORD}@192.168.1.128:5432/leon_wishlist_production
@@ -19,7 +25,6 @@ services:
       - log_data:/rails/log
     networks:
       - leon_wishlist_network
-    command: bundle exec rails server -b 0.0.0.0 -p 3000 -e production
 
   db:
     image: postgres:17-alpine
