@@ -4,6 +4,7 @@ class RegistrationsController < ApplicationController
   def new
     @user = User.new
     @family = Family.new
+    @families = Family.all
   end
 
   def create
